@@ -11,27 +11,15 @@ import ElementPlus from 'element-plus';
 const greetMsg = ref("");
 const name = ref("");
 
-const v3layer = inject('v3layer');
-const utils = inject('utils');
-
-const formObj = reactive({
-  tel:"",
-  pwd:""
-
-
-  });
+const form = reactive({
+  name: '',
  
-const handleSubmit = () => {
-    
+  desc: '',
+})
+
+const onSubmit = () => {
+  console.log('submit!')
 }
-
-
-
-
-
-
-
-
 
 
 async function greet() {
@@ -62,46 +50,17 @@ console.log(data);
 </script>
 
 <template>
-  <div class="card">
-    <input id="greet-input" v-model="name" placeholder="Enter a name..." />
-    <button type="button" @click="greet()">Greet</button>
-    <button type="button" @click="unlisten()">event</button>
-    <button type="button" @click="response()">request</button>
-  </div>
-  <p>{{ greetMsg }}</p>
-  <!-- 登录模板 -->
-<template>
-    <div>
-        <div class="ntMain__cont flex1 flexbox flex-col">
-            <div class="nt__lgregWrapper flex1 flexbox flex-col">
-                <NavBar transparent />
-
-                <div class="nt__lgregBox flex1">
-                    <div class="banner">
-                        <h2 class="tit flexbox flex-alignc"><img src="@assets/logo.png" />TAURI-VUE3-CAHT</h2>
-                        <img class="bg" src="/static/skin/bg-banner.jpg" />
-                    </div>
-                    <div class="forms">
-                        <form @submit.prevent="handleSubmit">
-                            <ul class="clearfix">
-                                <li><input class="iptxt flex1" type="text" v-model="formObj.tel" placeholder="请输入手机号" /></li>
-                                <li><input class="iptxt flex1" type="password" v-model="formObj.pwd" placeholder="请输入密码"/></li>
-                            </ul>
-                            <div class="btns">
-                                <el-button type="primary" native-type="submit" size="default" auto-insert-space>登录</el-button>
-                            </div>
-                            <div class="lgregLink align-c clearfix">
-                                <router-link class="navigator" to="#">忘记密码</router-link>
-                                <router-link class="navigator" to="/register">注册账号</router-link>
-                            </div>
-                            <!-- ... -->
-                        </form>
-                    </div>
-                </div>
-                <!-- ... -->
-            </div>
-        </div>
-    </div>
-</template>
+  <el-form :model="form" label-width="120px">
+    <el-form-item label="Activity name">
+      <el-input v-model="form.name" />
+    </el-form-item>
+    <el-form-item label="Activity form">
+      <el-input v-model="form.desc" type="textarea" />
+    </el-form-item>
+    <el-form-item>
+      <el-button type="primary" @click="onSubmit">Create</el-button>
+      <el-button>Cancel</el-button>
+    </el-form-item>
+  </el-form>
 
 </template>
