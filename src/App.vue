@@ -12,7 +12,7 @@ import Greet from "./components/Greet.vue";
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .logo.vite:hover {
   filter: drop-shadow(0 0 2em #747bff);
 }
@@ -20,4 +20,14 @@ import Greet from "./components/Greet.vue";
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #249b73);
 }
+
+*{
+  padding: 0;
+  margin: 0;
+}
+html,body,#app{
+  widows: 100%;
+  height: 100%;
+}
+
 </style>

@@ -6,8 +6,7 @@ import { fetch } from '@tauri-apps/api/http';
 import ElementPlus from 'element-plus';
 // import zhCn from 'node_modules/element-plus/dist/locale/zh-cn.mjs';
  
-
-
+import { useRouter } from "vue-router";
 const greetMsg = ref("");
 const name = ref("");
 
@@ -45,7 +44,13 @@ console.log(data);
 };
 
 
-
+const router = useRouter();
+const toPagePath = (url: string) => {
+// 这里回调写成对象，方便后面传参 push 写成 replace 不会留下历史记录
+  router.push({
+    path: url,
+  });
+};
 
 </script>
 
@@ -62,5 +67,5 @@ console.log(data);
       <el-button>Cancel</el-button>
     </el-form-item>
   </el-form>
-
+  <button @click="toPagePath('/login')">login</button>
 </template>
