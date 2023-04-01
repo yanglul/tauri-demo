@@ -47,6 +47,7 @@ console.log(data);
 const router = useRouter();
 const toPagePath = (url: string) => {
 // 这里回调写成对象，方便后面传参 push 写成 replace 不会留下历史记录
+console.log(url);
   router.push({
     path: url,
   });
